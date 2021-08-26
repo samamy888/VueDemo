@@ -13,8 +13,8 @@
 </template>
 
 <script lang="ts">
-import { AxiosResponse } from "axios";
 import { defineComponent, ref } from "vue";
+import { AxiosResponse } from "axios";
 import { getAllData } from "../api/api";
 import { resultModel } from "../model/model";
 export default defineComponent({

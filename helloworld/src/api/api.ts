@@ -1,3 +1,7 @@
 import axios from 'axios';
 
-export const getAllData = () => axios.request({url:'GetAll',method:'post'});
+const request = axios.create({
+    baseURL: process.env.VUE_APP_API_URL,
+})
+
+export const getAllData = () => request.post('GetAll');
