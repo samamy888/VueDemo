@@ -13,18 +13,40 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-
+import { AxiosResponse } from "axios";
+import { defineComponent, ref } from "vue";
+import { getAllData } from "../api/api";
+import { resultModel } from "../model/model";
 export default defineComponent({
-  setup () {
+  setup() {
+    getAllData()
+      .then((res:AxiosResponse<resultModel>) => {
+        console.log(res.data);
+      })
+      .catch((ex) => {
+        console.log(ex);
+      });
+    
     const tableData = ref([
-      { id: 10001, name: 'Test1', role: 'Develop', sex: 'Man', address: 'Shenzhen' },
-      { id: 10002, name: 'Test2', role: 'Test', sex: 'Man', address: 'Guangzhou' },
-      { id: 10003, name: 'Test3', role: 'PM', sex: 'Man', address: 'Shanghai' }
-    ])
+      {
+        id: 10001,
+        name: "Test1",
+        role: "Develop",
+        sex: "Man",
+        address: "Shenzhen",
+      },
+      {
+        id: 10002,
+        name: "Test2",
+        role: "Test",
+        sex: "Man",
+        address: "Guangzhou",
+      },
+      { id: 10003, name: "Test3", role: "PM", sex: "Man", address: "Shanghai" },
+    ]);
     return {
-      tableData
-    }
-  }
-})
+      tableData,
+    };
+  },
+});
 </script>
