@@ -1,4 +1,8 @@
 export interface resultModel{
-    Data:any;
-    Msg:string;
+    data:any;
+    isSuccess:boolean;
+}
+export interface DataModel{
+    id:string;
+    name:string;
 }
