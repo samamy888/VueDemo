@@ -165,18 +165,18 @@ export default defineComponent({
         });
     };
     return {
-      tableData,
-      searchEvent,
-      addEvent,
-      deleteEvent,
-      editEvent,
-      openModal,
-      OpenEditModal,
-      addModal,
-      editModal,
-      formData,
-      formEditData,
-      formRule,
+      tableData, //table資料
+      searchEvent, //搜尋事件
+      addEvent, //新增事件
+      deleteEvent,  //刪除事件
+      editEvent,  //編輯事件
+      openModal,  //打開新增彈窗
+      OpenEditModal,  //打開編輯彈窗
+      addModal, //新增彈窗的model
+      editModal,  //編輯彈窗的model
+      formData, //新增資料的model
+      formEditData, //編輯資料的model
+      formRule, //資料驗證規則
     };
   },
 });
