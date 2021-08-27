@@ -3,6 +3,6 @@ export interface resultModel{
     isSuccess:boolean;
 }
 export interface DataModel{
-    id:string;
+    id:number;
     name:string;
 }
