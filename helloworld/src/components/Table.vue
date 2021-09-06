@@ -142,14 +142,14 @@ export default defineComponent({
           console.log(ex);
         });
     };
-    const OpenEditModal = (row) => {
+    const OpenEditModal = (row: { id: any; name: any; }) => {
       editModal["value"].value = true;
       formEditData.value = {
         id:row.id,
         name:row.name,
       }
     };
-    const deleteEvent = (row) => {
+    const deleteEvent = (row: { id: number; }) => {
       console.log(row.id);
       deleteData(row.id)
         .then((res: AxiosResponse<resultModel>) => {
