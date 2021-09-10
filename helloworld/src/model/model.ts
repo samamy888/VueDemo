@@ -6,3 +6,7 @@ export interface DataModel{
     id:number;
     name:string;
 }
+export interface LoginModel{
+    username:string;
+    password:string;
+}
