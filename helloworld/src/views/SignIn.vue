@@ -1,10 +1,10 @@
 <template>
   <div class="SignIn">
     <vxe-form :data="formData" @submit="signInEvent()" :rules="formRule">
-      <vxe-form-item title="用戶名" field="username" align="center" >
+      <vxe-form-item title="用戶名" field="username" align="center">
         <vxe-input v-model="formData.username" placeholder="Name"></vxe-input>
       </vxe-form-item>
-      <vxe-form-item title="密碼" field="password" align="center" >
+      <vxe-form-item title="密碼" field="password" align="center">
         <vxe-input v-model="formData.password"></vxe-input>
       </vxe-form-item>
       <vxe-form-item align="center" span="24">
@@ -18,7 +18,12 @@ import { defineComponent, ref } from "vue";
 import { AxiosResponse } from "axios";
 import { signIn } from "../api/api";
 import { LoginModel } from "../model/model";
-//import router from "@/router";
+import {
+  RouteLocationNormalizedLoaded,
+  useRoute,
+  Router,
+  useRouter,
+} from "vue-router";
 export default defineComponent({
   setup() {
     const formData = ref<LoginModel>({
@@ -29,12 +34,16 @@ export default defineComponent({
       username: [{ required: true, message: "請輸入用戶名" }],
       password: [{ required: true, message: "請輸入密碼" }],
     });
+    const route: RouteLocationNormalizedLoaded = useRoute();
+    const router: Router = useRouter();
+
     const signInEvent = () => {
       signIn(formData.value)
         .then((res: AxiosResponse<any>) => {
-          localStorage.setItem('token',res.data);
+          localStorage.setItem("token", res.data);
           alert("登入成功!");
-          //router.push('/table');
+          const redirect: string = route.query.redirect as string;
+          router.push(redirect ?? "/");
         })
         .catch((ex) => {
           console.log(ex);
